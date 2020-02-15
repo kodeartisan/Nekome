@@ -1,0 +1,16 @@
+include(
+    ":app",
+    ":app-discover",
+    ":app-profile",
+    ":app-search",
+    ":app-series",
+    ":app-settings",
+    ":app-timeline",
+    ":account",
+    ":core",
+    ":database",
+    ":kitsu",
+    ":series",
+    ":server",
+    ":testing"
+)
