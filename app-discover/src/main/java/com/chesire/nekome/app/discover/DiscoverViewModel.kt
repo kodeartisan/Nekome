@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.chesire.nekome.core.extensions.postError
 import com.chesire.nekome.core.extensions.postSuccess
 import com.chesire.nekome.core.flags.AsyncState
-import com.chesire.nekome.core.models.SeriesModel
 import com.chesire.nekome.server.Resource
 import com.chesire.nekome.server.api.TrendingApi
 import kotlinx.coroutines.launch
