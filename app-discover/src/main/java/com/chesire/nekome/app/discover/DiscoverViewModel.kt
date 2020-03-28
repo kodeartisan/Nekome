@@ -18,8 +18,7 @@ import javax.inject.Inject
  */
 class DiscoverViewModel @Inject constructor(private val trending: TrendingApi) : ViewModel() {
     private val _trendingAnime by lazy {
-        val trendingData =
-            MutableLiveData<AsyncState<List<SeriesModel>, DiscoverError>>(AsyncState.Loading())
+        val trendingData = MutableLiveData<TrendingData>(AsyncState.Loading())
         viewModelScope.launch {
             when (val animeList = trending.trendingAnime()) {
                 is Resource.Success -> trendingData.postSuccess(animeList.data)
@@ -30,8 +29,7 @@ class DiscoverViewModel @Inject constructor(private val trending: TrendingApi) :
     }
 
     private val _trendingManga by lazy {
-        val trendingData =
-            MutableLiveData<AsyncState<List<SeriesModel>, DiscoverError>>(AsyncState.Loading())
+        val trendingData = MutableLiveData<TrendingData>(AsyncState.Loading())
         viewModelScope.launch {
             when (val mangaList = trending.trendingManga()) {
                 is Resource.Success -> trendingData.postSuccess(mangaList.data)
@@ -44,12 +42,12 @@ class DiscoverViewModel @Inject constructor(private val trending: TrendingApi) :
     /**
      * Get the current trending Anime series.
      */
-    val trendingAnime: LiveData<AsyncState<List<SeriesModel>, DiscoverError>>
+    val trendingAnime: LiveData<TrendingData>
         get() = _trendingAnime
 
     /**
      * Get the current trending Manga series.
      */
-    val trendingManga: LiveData<AsyncState<List<SeriesModel>, DiscoverError>>
+    val trendingManga: LiveData<TrendingData>
         get() = _trendingManga
 }
